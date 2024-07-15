@@ -36,3 +36,8 @@ function App() {
 }
 
 export default App;
+
+// ОС Ubuntu 20.04
+// IP 88.218.60.127
+// Пользователь root
+// Пароль x2rs64VW28k6LDJz
