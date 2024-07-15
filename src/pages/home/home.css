@@ -1,0 +1,79 @@
+.home-container {
+  background-color: #18181a; /* Ensures consistency with the project's background */
+  color: #e0e0e0; /* Light text color for readability */
+  padding: 20px;
+  margin-top: 100px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-section {
+  text-align: center;
+  background: url("/images/321467.jpg") no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  padding: 50px 20px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+.hero-section h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.featured-games {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.featured-games h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.featured-games .ant-card {
+  background-color: #2c2c2e; /* Dark card background */
+  border-radius: 8px;
+}
+
+.featured-games .ant-card-meta-title,
+.featured-games .ant-card-meta-description {
+  color: #e0e0e0; /* Light text color */
+}
+
+.community-section {
+  text-align: center;
+  background-color: #202022; /* Darker background for the section */
+  color: #e0e0e0; /* Light text color */
+  padding: 40px 20px;
+  border-radius: 8px;
+}
+
+.community-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.community-section p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.ant-btn-primary {
+  background-color: #1a73e8;
+  border-color: #1a73e8;
+}
+
+.ant-btn-primary:hover {
+  background-color: #155ab2;
+  border-color: #155ab2;
+}
