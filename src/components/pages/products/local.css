@@ -49,8 +49,11 @@
   font-size: 24px;
   margin-bottom: 16px;
   text-align: center;
-  color: #fff;
   font-weight: bold;
+}
+
+.ant-card-meta-title {
+  color: #fff !important;
 }
 
 .ant-card-meta-description {
@@ -62,6 +65,10 @@
 .anticon {
   display: block;
   margin: 0 auto 16px;
+}
+
+.custom-card-title {
+  color: #fff !important;
 }
 
 @media (max-width: 576px) {

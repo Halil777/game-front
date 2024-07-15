@@ -14,9 +14,12 @@
     "framer-motion": "^11.2.12",
     "i18next": "^23.11.5",
     "react": "^18.3.1",
+    "react-countup": "^6.5.3",
     "react-dom": "^18.3.1",
     "react-i18next": "^14.1.2",
+    "react-intersection-observer": "^9.13.0",
     "react-router-dom": "^6.24.0",
+    "react-scroll-motion": "^0.3.3",
     "react-slideshow-image": "^4.0.3",
     "swiper": "^11.1.4",
     "uuid": "^10.0.0"

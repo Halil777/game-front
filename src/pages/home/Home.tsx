@@ -1,15 +1,40 @@
 import { FC } from "react";
 import { Row, Col, Card, Button, Layout } from "antd";
 import { Link } from "react-router-dom";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import "./home.css";
 
 const { Content } = Layout;
 
 const Home: FC = () => {
+  // Animation controls for different sections
+  const heroControls = useAnimation();
+  const featuredGamesControls = useAnimation();
+  const communityControls = useAnimation();
+
+  // Intersection observers for triggering animations
+  const [heroRef, heroInView] = useInView({ triggerOnce: true });
+  const [featuredGamesRef, featuredGamesInView] = useInView({
+    triggerOnce: true,
+  });
+  const [communityRef, communityInView] = useInView({ triggerOnce: true });
+
+  // Trigger animations when elements are in view
+  if (heroInView) heroControls.start({ opacity: 1, y: 0 });
+  if (featuredGamesInView) featuredGamesControls.start({ opacity: 1, y: 0 });
+  if (communityInView) communityControls.start({ opacity: 1, y: 0 });
+
   return (
     <Content className="home-container">
       <div className="container">
-        <div className="hero-section">
+        <motion.div
+          className="hero-section"
+          initial={{ opacity: 0, y: -50 }}
+          animate={heroControls}
+          ref={heroRef}
+          transition={{ duration: 0.5 }}
+        >
           <h1>Welcome to GameHub</h1>
           <p>
             Игровая платформа, которая позволит поклонникам киберспорта в
@@ -18,59 +43,51 @@ const Home: FC = () => {
           <Button type="primary" size="large">
             Get Started
           </Button>
-        </div>
+        </motion.div>
 
-        <div className="featured-games">
+        <motion.div
+          className="featured-games"
+          initial={{ opacity: 0, y: 50 }}
+          animate={featuredGamesControls}
+          ref={featuredGamesRef}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <h2>Featured Games</h2>
           <Row gutter={[16, 16]}>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <Card
-                hoverable
-                cover={<img alt="Game 1" src="/images/321467.jpg" />}
-              >
-                <Card.Meta
-                  title="Game Title 1"
-                  description="Exciting adventure game"
-                />
-              </Card>
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <Card
-                hoverable
-                cover={<img alt="Game 2" src="/images/321467.jpg" />}
-              >
-                <Card.Meta
-                  title="Game Title 2"
-                  description="Thrilling action game"
-                />
-              </Card>
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <Card
-                hoverable
-                cover={<img alt="Game 3" src="/images/321467.jpg" />}
-              >
-                <Card.Meta title="Game Title 3" description="Fun puzzle game" />
-              </Card>
-            </Col>
-            <Col xs={24} sm={12} md={8} lg={6}>
-              <Card
-                hoverable
-                cover={<img alt="Game 4" src="/images/321467.jpg" />}
-              >
-                <Card.Meta title="Game Title 4" description="Epic RPG game" />
-              </Card>
-            </Col>
+            {[1, 2, 3, 4].map((i) => (
+              <Col key={i} xs={24} sm={12} md={8} lg={6}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Card
+                    hoverable
+                    cover={<img alt={`Game ${i}`} src="/images/321467.jpg" />}
+                  >
+                    <Card.Meta
+                      title={`Game Title ${i}`}
+                      description={`Exciting adventure game ${i}`}
+                    />
+                  </Card>
+                </motion.div>
+              </Col>
+            ))}
           </Row>
-        </div>
+        </motion.div>
 
-        <div className="community-section">
+        <motion.div
+          className="community-section"
+          initial={{ opacity: 0, y: 50 }}
+          animate={communityControls}
+          ref={communityRef}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
           <h2>Join Our Community</h2>
           <p>Connect with other gamers and share your experiences</p>
           <Link to="/community">
             <Button type="primary">Join Now</Button>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </Content>
   );
