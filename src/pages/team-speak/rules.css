@@ -1,0 +1,89 @@
+/* rules.css */
+
+.rules-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.rules-card {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1d; /* Dark background for the card */
+  color: #ffffff; /* White text color */
+  border-radius: 8px;
+  overflow: hidden; /* Ensures the image and text don't overflow */
+  max-width: 900px;
+  width: 100%;
+}
+
+.rules-card img {
+  width: 50%; /* Adjust as needed */
+  height: auto;
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.rules-card-content {
+  padding: 20px;
+  width: 50%;
+}
+
+.rules-card-content h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.rules-card-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.rules-card-content .learn-button {
+  padding: 15px 30px;
+  background-color: #ff7a45; /* Primary color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.rules-card-content .learn-button:hover {
+  background-color: #ff5722;
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* rules.css */
+
+.rules-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  color: #ffffff;
+  background-color: #18181a; /* Dark background */
+  min-height: 100vh;
+  margin-top: 100px;
+}
+
+.rules-detail-heading {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.rules-detail-description {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.rules-detail-description ol {
+  list-style-position: inside; /* Ensures numbers are inside the list */
+  margin: 0;
+  padding: 0;
+}
+
+.rules-detail-description li {
+  margin-bottom: 15px;
+}

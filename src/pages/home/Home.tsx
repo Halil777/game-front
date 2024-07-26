@@ -1,13 +1,21 @@
 import { FC } from "react";
 import { Row, Col, Card, Button, Layout } from "antd";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import {
+  MacCommandOutlined,
+  AndroidOutlined,
+  WindowsOutlined,
+} from "@ant-design/icons"; // Ant Design icons
 import "./home.css";
+import News from "../news/News";
 
 const { Content } = Layout;
 
 const Home: FC = () => {
+  const navigate = useNavigate();
+
   // Animation controls for different sections
   const heroControls = useAnimation();
   const featuredGamesControls = useAnimation();
@@ -19,6 +27,8 @@ const Home: FC = () => {
     triggerOnce: true,
   });
   const [communityRef, communityInView] = useInView({ triggerOnce: true });
+
+  console.log(communityRef);
 
   // Trigger animations when elements are in view
   if (heroInView) heroControls.start({ opacity: 1, y: 0 });
@@ -35,14 +45,27 @@ const Home: FC = () => {
           ref={heroRef}
           transition={{ duration: 0.5 }}
         >
-          <h1>Welcome to GameHub</h1>
+          <h1>Welcome to Electron Sport</h1>
           <p>
             Игровая платформа, которая позволит поклонникам киберспорта в
             Туркменистане еще больше насладится игровым процессом.
           </p>
-          <Button type="primary" size="large">
-            Get Started
-          </Button>
+          <div className="hero-actions">
+            <Button
+              type="primary"
+              size="large"
+              className="registration-button"
+              onClick={() => navigate("/login")}
+            >
+              Get Started
+            </Button>
+            <div className="available-on">
+              <span>Доступно:</span>
+              <MacCommandOutlined className="platform-icon" />
+              <AndroidOutlined className="platform-icon" />
+              <WindowsOutlined className="platform-icon" />
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
@@ -75,19 +98,23 @@ const Home: FC = () => {
           </Row>
         </motion.div>
 
-        <motion.div
-          className="community-section"
-          initial={{ opacity: 0, y: 50 }}
-          animate={communityControls}
-          ref={communityRef}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <h2>Join Our Community</h2>
-          <p>Connect with other gamers and share your experiences</p>
-          <Link to="/community">
-            <Button type="primary">Join Now</Button>
-          </Link>
-        </motion.div>
+        <News />
+
+        <div className="call-to-action">
+          <h2 className="cta-title">Как начать играть на платформе?</h2>
+          <p className="cta-description">
+            Пройди регистрацию, получи индивидуальный ключ и начни играть с
+            нами!
+          </p>
+          <div className="cta-button-container">
+            <Button
+              className="all-news-btn"
+              onClick={() => navigate("/registration")}
+            >
+              Регистрация
+            </Button>
+          </div>
+        </div>
       </div>
     </Content>
   );

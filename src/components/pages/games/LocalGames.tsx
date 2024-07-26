@@ -1,19 +1,13 @@
 import { FC } from "react";
+import useSWR from "swr";
 import { Row, Col, Card } from "antd";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./localgames.css";
+import { BASE_URL } from "../../../api/baseUrl";
 
-const games = [
-  { title: "Game Title 1", image: "/images/game1.jpg" },
-  { title: "Game Title 2", image: "/images/game2.jpg" },
-  { title: "Game Title 3", image: "/images/game3.jpg" },
-  { title: "Game Title 4", image: "/images/game4.jpg" },
-  { title: "Game Title 5", image: "/images/game5.jpg" },
-  { title: "Game Title 6", image: "/images/game6.jpg" },
-  { title: "Game Title 7", image: "/images/game7.jpg" },
-  { title: "Game Title 8", image: "/images/game8.jpg" },
-];
+// Define the fetcher function for SWR
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -21,8 +15,15 @@ const cardVariants = {
 };
 
 const LocalGames: FC = () => {
-  const gameRefs = Array.from({ length: games.length }, () =>
-    useInView({ triggerOnce: true })
+  const { data, error } = useSWR(`${BASE_URL}/game/get-games`, fetcher);
+  const [ref, inView] = useInView({ triggerOnce: true });
+
+  if (error) return <div>Error loading games</div>;
+  if (!data) return <div>Loading...</div>;
+
+  // Filter games that are LOCAL
+  const localGames = data.games.filter(
+    (game: any) => game.location === "LOCAL"
   );
 
   return (
@@ -49,21 +50,26 @@ const LocalGames: FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
+          ref={ref}
         >
           <h2>Popular Local Games</h2>
           <Row gutter={[16, 16]}>
-            {games.map((game, index) => (
-              <Col key={index} xs={24} sm={12} md={8} lg={6}>
+            {localGames.map((game: any, index: number) => (
+              <Col key={game.id} xs={24} sm={12} md={8} lg={6}>
                 <motion.div
-                  ref={gameRefs[index][0]}
                   initial="hidden"
-                  animate={gameRefs[index][1] ? "visible" : "hidden"}
+                  animate={inView ? "visible" : "hidden"}
                   variants={cardVariants}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <Card
                     hoverable
-                    cover={<img alt={game.title} src={game.image} />}
+                    cover={
+                      <img
+                        alt={game.title_en}
+                        src={`${BASE_URL}/${game.assets[0]?.url}`}
+                      />
+                    }
                   >
                     <Card.Meta
                       title={
@@ -74,7 +80,7 @@ const LocalGames: FC = () => {
                             fontWeight: "bold",
                           }}
                         >
-                          {game.title}
+                          {game.title_en}
                         </span>
                       }
                     />

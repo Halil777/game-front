@@ -1,84 +1,89 @@
 import { FC } from "react";
-import { Card, Avatar, Space, Tooltip } from "antd";
-import { Link } from "react-router-dom";
+import useSWR from "swr";
+import { Card, Avatar, Space, Tooltip, Button } from "antd";
+import { useNavigate, useLocation } from "react-router-dom";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./news.css";
+import { BASE_URL } from "../../api/baseUrl";
 
 const { Meta } = Card;
 
-const newsItems = [
-  {
-    id: 1,
-    title: "Exciting News About Game 1",
-    imageUrl: "/images/321467.jpg",
-    date: "2024-07-15",
-    link: "/news/game1",
-  },
-  {
-    id: 2,
-    title: "New Features Added to Game 2",
-    imageUrl: "/images/321467.jpg",
-    date: "2024-07-14",
-    link: "/news/game2",
-  },
-  {
-    id: 3,
-    title: "Upcoming Events for Game 3",
-    imageUrl: "/images/321467.jpg",
-    date: "2024-07-13",
-    link: "/news/game3",
-  },
-  {
-    id: 4,
-    title: "Major Update Released for Game 4",
-    imageUrl: "/images/321467.jpg",
-    date: "2024-07-12",
-    link: "/news/game4",
-  },
-];
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const News: FC = () => {
   const newsControls = useAnimation();
   const [newsRef, newsInView] = useInView({ triggerOnce: true });
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { data: newsItems, error } = useSWR(`${BASE_URL}/news`, fetcher);
 
   if (newsInView) newsControls.start({ opacity: 1, y: 0 });
 
+  const handleIconClick = (link: string) => {
+    navigate(link);
+  };
+
+  if (error) return <div>Error loading news</div>;
+  if (!newsItems) return <div>Loading...</div>;
+
+  // Limit news items to 4 if on the home page
+  const displayedNews =
+    location.pathname === "/" ? newsItems.slice(0, 3) : newsItems;
+
   return (
-    <motion.div
-      className="news-container"
-      initial={{ opacity: 0, y: 50 }}
-      animate={newsControls}
-      ref={newsRef}
-      transition={{ duration: 0.5, delay: 0.3 }}
-    >
-      {newsItems.map((item) => (
-        <Card
-          key={item.id}
-          hoverable
-          cover={<img alt={item.title} src={item.imageUrl} />}
-          className="news-card"
-        >
-          <Meta
-            avatar={<Avatar src="/images/321467.jpg" />}
-            title={<span className="game-title">{item.title}</span>}
-            description={
-              <Space direction="horizontal" align="center">
-                <span style={{ color: "#ffffff", marginRight: "8px" }}>
-                  {item.date}
-                </span>
-                <Tooltip title="Read More" key={`tooltip-${item.id}`}>
-                  <Link to={item.link}>
-                    <InfoCircleOutlined style={{ color: "#1890ff" }} />
-                  </Link>
-                </Tooltip>
-              </Space>
+    <>
+      <h2 className="news-heading">Новости и мероприятия</h2>
+      <motion.div
+        className="news-container"
+        initial={{ opacity: 0, y: 50 }}
+        animate={newsControls}
+        ref={newsRef}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        {displayedNews.map((item: any) => (
+          <Card
+            key={item.id}
+            hoverable
+            cover={
+              <img alt={item.title_tm} src={`${BASE_URL}/${item.image}`} />
             }
-          />
-        </Card>
-      ))}
-    </motion.div>
+            className="news-card"
+          >
+            <Meta
+              avatar={<Avatar src={`${BASE_URL}/${item.image}`} />}
+              title={<span className="game-title">{item.title_tm}</span>}
+              description={
+                <Space
+                  direction="horizontal"
+                  align="center"
+                  className="news-meta-description"
+                >
+                  <span className="news-date">
+                    {new Date(item.created_at).toLocaleDateString()}
+                  </span>
+                  <Tooltip title="Read More" key={`tooltip-${item.id}`}>
+                    <InfoCircleOutlined
+                      style={{ color: "#1890ff" }}
+                      onClick={() => handleIconClick(`/news/${item.id}`)}
+                    />
+                  </Tooltip>
+                </Space>
+              }
+            />
+          </Card>
+        ))}
+      </motion.div>
+      {location.pathname === "/" && (
+        <div className="news-button-container">
+          <Button className="all-news-btn" onClick={() => navigate("/news")}>
+            Все Новости
+          </Button>
+        </div>
+      )}
+    </>
   );
 };
 

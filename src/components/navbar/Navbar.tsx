@@ -1,19 +1,16 @@
 import { FC, useState, useEffect } from "react";
-import { Menu, Dropdown } from "antd";
-import { Link } from "react-router-dom";
+import { Menu, Dropdown, Button } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import Language from "../../utils/language/Language";
 
 const Navbar: FC = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -29,6 +26,9 @@ const Navbar: FC = () => {
       </Menu.Item>
       <Menu.Item key="2" className="custom-dropdown-menu-item">
         <Link to="/online-servers">Online Servers</Link>
+      </Menu.Item>
+      <Menu.Item key="3" className="custom-dropdown-menu-item">
+        <Link to="/team-speak">TeamSpeak</Link>
       </Menu.Item>
     </Menu>
   );
@@ -49,10 +49,11 @@ const Navbar: FC = () => {
       <div className="container">
         <div className="navbar-content">
           <div className="logo">
-            {/* <Link to="/">
-              <img src={logo} alt="Logo" />
-            </Link> */}
-            <h3>Logo</h3>
+            <img
+              src="/images/logo.svg"
+              alt="Logo"
+              onClick={() => navigate("/")}
+            />
           </div>
           <Menu mode="horizontal" className="menu">
             <Menu.Item key="products">
@@ -88,6 +89,17 @@ const Navbar: FC = () => {
               <Language />
             </Menu.Item>
           </Menu>
+          <Button
+            type="primary"
+            style={{
+              backgroundColor: "#79109D",
+              borderColor: "#79109D",
+              padding: "20px",
+            }}
+            onClick={() => navigate("/login")}
+          >
+            Registration
+          </Button>
         </div>
       </div>
     </div>

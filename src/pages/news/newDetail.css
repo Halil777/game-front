@@ -1,0 +1,33 @@
+.news-detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.news-image-container {
+  width: 100%;
+  max-height: 50vh; /* Adjust height as per your design */
+  margin-bottom: 20px;
+}
+
+.news-title {
+  margin-bottom: 10px;
+}
+
+.news-content {
+  margin-bottom: 20px;
+}
+
+.news-metadata {
+  display: flex;
+  justify-content: center;
+}
+
+.news-date {
+  margin-right: 10px;
+}
+
+.news-time {
+  margin-left: 10px;
+}

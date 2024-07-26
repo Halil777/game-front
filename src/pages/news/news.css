@@ -4,13 +4,28 @@
   justify-content: center;
   gap: 20px;
   padding: 20px;
-  margin-top: 160px;
+}
+
+.news-heading {
+  text-align: center;
+  font-size: 42px; /* Larger font size for more prominence */
+  color: #ffffff; /* White color for better contrast */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Stronger shadow for better readability */
+  margin-top: 170px;
+}
+
+.news-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .news-card {
   width: 300px;
   height: auto;
   margin-bottom: 20px;
+  background-color: #333; /* Dark background color */
+  color: #ffffff; /* White text color */
 }
 
 .news-meta-description {

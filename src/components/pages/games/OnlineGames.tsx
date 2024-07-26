@@ -1,61 +1,61 @@
+import useSWR from "swr";
 import { FC } from "react";
 import { Card } from "antd";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./online.css";
 
-// Example data for games (replace with actual data)
-const games = [
-  {
-    id: 1,
-    title: "Online Game 1",
-    imageUrl: "/images/game8.jpg",
-  },
-  {
-    id: 2,
-    title: "Online Game 2",
-    imageUrl: "/images/game7.jpg",
-  },
-  {
-    id: 3,
-    title: "Online Game 3",
-    imageUrl: "/images/game6.jpg",
-  },
-  {
-    id: 4,
-    title: "Online Game 4",
-    imageUrl: "/images/game5.jpg",
-  },
-  {
-    id: 5,
-    title: "Online Game 5",
-    imageUrl: "/images/game4.jpg",
-  },
-  {
-    id: 6,
-    title: "Online Game 6",
-    imageUrl: "/images/game3.jpg",
-  },
-  {
-    id: 7,
-    title: "Online Game 7",
-    imageUrl: "/images/game2.jpg",
-  },
-  {
-    id: 8,
-    title: "Online Game 8",
-    imageUrl: "/images/game1.jpg",
-  },
-];
+// Define the fetcher function for SWR
+const fetcher = async (url: string) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("Token not found in localStorage");
+  }
+
+  const response = await fetch(url, {
+    method: "POST", // Use POST method as required
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Add the token to headers
+    },
+    body: JSON.stringify({
+      page: 1,
+      size: 20,
+      sort: "sort_by_date_desc",
+      location: "GLOBAL",
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    console.error("API Error:", error);
+    throw new Error(error.message || "An error occurred while fetching data");
+  }
+
+  return response.json();
+};
+
+// Hardcoded URL for testing
+const baseURL = "http://88.218.60.127:5678";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const OnlineGames: FC = () => {
-  // Initialize an array to store refs and inView states for each game card
-  const gameRefs = games.map(() => useInView({ triggerOnce: true }));
+  const { data, error } = useSWR(`${baseURL}/game/get-games`, fetcher);
+  const [ref, inView] = useInView({ triggerOnce: true });
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
+  if (error) {
+    console.error("Error loading games:", error);
+    return <div>Error loading games: {error.message}</div>;
+  }
+  if (!data) return <div>Loading...</div>;
+
+  const games = Array.isArray(data?.games) ? data.games : [];
+  const globalGames = games.filter((game: any) => game.location === "GLOBAL");
 
   return (
     <div className="online-games-container">
@@ -69,22 +69,27 @@ const OnlineGames: FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        {games.map((game, index) => (
+        {globalGames.map((game: any, index: number) => (
           <motion.div
             key={game.id}
-            ref={gameRefs[index].ref} // Access the ref from useInView
+            ref={ref}
             initial="hidden"
-            animate={gameRefs[index].inView ? "visible" : "hidden"}
+            animate={inView ? "visible" : "hidden"}
             variants={cardVariants}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="game-card"
           >
             <Card
               hoverable
-              cover={<img alt={game.title} src={game.imageUrl} />}
+              cover={
+                <img
+                  alt={game.title_en}
+                  src={`${baseURL}/${game.assets[0]?.url}`}
+                />
+              }
             >
               <Card.Meta
-                title={<span className="game-title">{game.title}</span>}
+                title={<span className="game-title">{game.title_en}</span>}
               />
             </Card>
           </motion.div>

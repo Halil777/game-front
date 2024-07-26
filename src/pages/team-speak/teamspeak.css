@@ -1,0 +1,47 @@
+/* teamspeak.css */
+
+.teamspeak-hero {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #1a1a1d; /* Dark background for contrast */
+  color: #ffffff; /* White text color for better readability */
+  border-radius: 8px;
+  margin: 40px auto;
+  max-width: 900px; /* Center alignment with a max width */
+  margin-top: 120px;
+}
+
+.teamspeak-hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+}
+
+.teamspeak-hero p {
+  font-size: 24px;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+}
+
+.teamspeak-hero .download-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: #ff7a45; /* Primary color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.download-button:hover {
+  background-color: #ff5722;
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.download-button .windows-icon {
+  font-size: 20px;
+  margin-right: 10px; /* Space between icon and text */
+}

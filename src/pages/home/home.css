@@ -1,5 +1,5 @@
 .home-container {
-  background-color: #18181a; /* Ensures consistency with the project's background */
+  background-color: #18181a; /* Consistent dark background */
   color: #e0e0e0; /* Light text color for readability */
   padding: 20px;
   margin-top: 100px;
@@ -12,22 +12,82 @@
 
 .hero-section {
   text-align: center;
-  background: url("/images/321467.jpg") no-repeat center center;
-  background-size: cover;
+  /* background: url("/images/321467.jpg") no-repeat center center; */
+  /* background-size: cover; */
   color: #fff;
   padding: 50px 20px;
   margin-bottom: 40px;
   border-radius: 8px;
+  position: relative;
 }
 
 .hero-section h1 {
   font-size: 48px;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
 }
 
 .hero-section p {
   font-size: 24px;
   margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Space between elements */
+  margin-top: 20px;
+}
+
+.registration-button {
+  font-size: 20px;
+  padding: 10px 30px;
+  background-color: #ff7a45;
+  border-color: #ff7a45;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.registration-button:hover {
+  background-color: #ff5722;
+  border-color: #ff5722;
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.available-on {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between text and icons */
+  color: #e0e0e0;
+  font-size: 18px;
+}
+
+.all-news-btn {
+  padding: 20px 45px;
+  background-color: #79109d; /* Primary color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.news-button-container .all-news-btn:hover {
+  background-color: #5e0b7c;
+}
+.platform-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #e0e0e0; /* Light color for visibility */
+  transition: color 0.3s, transform 0.3s; /* Smooth transition for color and size */
+}
+
+.platform-icon:hover {
+  color: #ff7a45; /* Change color on hover */
+  transform: scale(1.2); /* Slightly increase size on hover */
 }
 
 .featured-games {
@@ -50,24 +110,6 @@
   color: #e0e0e0; /* Light text color */
 }
 
-.community-section {
-  text-align: center;
-  background-color: #202022; /* Darker background for the section */
-  color: #e0e0e0; /* Light text color */
-  padding: 40px 20px;
-  border-radius: 8px;
-}
-
-.community-section h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.community-section p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
 .ant-btn-primary {
   background-color: #1a73e8;
   border-color: #1a73e8;
@@ -76,4 +118,42 @@
 .ant-btn-primary:hover {
   background-color: #155ab2;
   border-color: #155ab2;
+}
+
+.call-to-action {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.cta-title {
+  font-size: 56px; /* Adjust as needed */
+  color: #ffffff; /* White text color for contrast */
+  margin-bottom: 20px;
+  margin-top: 150px;
+}
+
+.cta-description {
+  font-size: 22px; /* Adjust as needed */
+  color: #ffffff; /* White text color for contrast */
+  margin-bottom: 30px;
+}
+
+.cta-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.all-news-btn {
+  padding: 20px 45px;
+  background-color: #79109d; /* Primary color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.all-news-btn:hover {
+  background-color: #5e0b7c;
 }

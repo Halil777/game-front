@@ -31,8 +31,9 @@
 }
 
 .logo img {
-  height: 40px; /* Adjust the logo size as needed */
+  height: 50px; /* Adjust the logo size as needed */
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .menu {

@@ -1,0 +1,95 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  background-color: #18181a;
+  margin-top: 150px;
+}
+
+.signup-form {
+  width: 400px;
+  padding: 40px;
+  background: #1f1f1f; /* Darker form background */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  border-radius: 8px;
+  color: #fff; /* White text */
+}
+
+.logo img {
+  max-width: 100px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #333; /* Dark border */
+  border-radius: 4px;
+  background-color: #2c2c2e; /* Dark input background */
+  color: #fff; /* White text */
+}
+
+.password-input {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ccc; /* Light gray for visibility */
+}
+
+.signup-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #79109d; /* Primary color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+  background-color: #5e0b7c; /* Darker shade on hover */
+}
+
+.additional-options {
+  margin-top: 20px;
+}
+
+.phone-button {
+  background: none;
+  border: none;
+  color: #79109d;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.login-text {
+  color: #ccc; /* Light gray for subtle text */
+}
+
+.login-link {
+  color: #79109d; /* Link color */
+  cursor: pointer;
+}

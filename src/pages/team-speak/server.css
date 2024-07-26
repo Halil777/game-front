@@ -1,0 +1,62 @@
+/* server.css */
+
+.server-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background-color: #18181a; /* Dark background for consistency */
+}
+
+.server-card {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1d; /* Dark background for the card */
+  color: #ffffff; /* White text color */
+  border-radius: 8px;
+  overflow: hidden; /* Ensures the image and text don't overflow */
+  max-width: 900px;
+  width: 100%;
+}
+
+.server-image {
+  width: 50%; /* Adjust as needed */
+  height: auto;
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.server-details {
+  padding: 20px;
+  width: 50%;
+}
+
+.server-details h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.server-details h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.server-list {
+  list-style-position: inside; /* Ensures numbers are inside the list */
+  margin: 0;
+  padding: 0;
+  max-height: 180px; /* Set the maximum height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Hide scrollbar for Webkit browsers */
+.server-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.server-list {
+  scrollbar-width: none; /* Firefox */
+}
+
+li {
+  line-height: 2;
+}
