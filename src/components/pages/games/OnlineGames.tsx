@@ -5,6 +5,18 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./online.css";
 
+// Define interfaces for the data structure
+interface GameAsset {
+  url: string;
+}
+
+interface GameItem {
+  id: number;
+  title_en: string;
+  assets: GameAsset[];
+  location: string;
+}
+
 // Define the fetcher function for SWR
 const fetcher = async (url: string) => {
   const token = localStorage.getItem("token");
@@ -14,10 +26,10 @@ const fetcher = async (url: string) => {
   }
 
   const response = await fetch(url, {
-    method: "POST", // Use POST method as required
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`, // Add the token to headers
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       page: 1,
@@ -45,7 +57,10 @@ const cardVariants = {
 };
 
 const OnlineGames: FC = () => {
-  const { data, error } = useSWR(`${baseURL}/game/get-games`, fetcher);
+  const { data, error } = useSWR<{ games: GameItem[] }>(
+    `${baseURL}/game/admin/get-games`,
+    fetcher
+  );
   const [ref, inView] = useInView({ triggerOnce: true });
 
   if (error) {
@@ -55,7 +70,7 @@ const OnlineGames: FC = () => {
   if (!data) return <div>Loading...</div>;
 
   const games = Array.isArray(data?.games) ? data.games : [];
-  const globalGames = games.filter((game: any) => game.location === "GLOBAL");
+  const globalGames = games.filter((game) => game.location === "GLOBAL");
 
   return (
     <div className="online-games-container">
@@ -69,7 +84,7 @@ const OnlineGames: FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        {globalGames.map((game: any, index: number) => (
+        {globalGames.map((game, index) => (
           <motion.div
             key={game.id}
             ref={ref}

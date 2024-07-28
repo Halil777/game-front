@@ -6,8 +6,49 @@ import { useInView } from "react-intersection-observer";
 import "./localgames.css";
 import { BASE_URL } from "../../../api/baseUrl";
 
-// Define the fetcher function for SWR
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+interface GameAsset {
+  url: string;
+}
+
+interface GameItem {
+  id: number;
+  title_en: string;
+  assets: GameAsset[];
+  location: string;
+}
+
+const fetcher = async (url: string) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("Token not found in localStorage");
+  }
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      page: 1,
+      size: 20,
+      sort: "sort_by_date_desc",
+      location: "LOCAL",
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    console.error("API Error:", error);
+    throw new Error(error.message || "An error occurred while fetching data");
+  }
+
+  return response.json();
+};
+
+// Hardcoded URL for testing
+const baseURL = "http://88.218.60.127:5678";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -15,16 +56,20 @@ const cardVariants = {
 };
 
 const LocalGames: FC = () => {
-  const { data, error } = useSWR(`${BASE_URL}/game/get-games`, fetcher);
+  const { data, error } = useSWR<{ games: GameItem[] }>(
+    `${baseURL}/game/admin/get-games`,
+    fetcher
+  );
   const [ref, inView] = useInView({ triggerOnce: true });
 
-  if (error) return <div>Error loading games</div>;
+  if (error) {
+    console.error("Error loading games:", error);
+    return <div>Error loading games: {error.message}</div>;
+  }
   if (!data) return <div>Loading...</div>;
 
-  // Filter games that are LOCAL
-  const localGames = data.games.filter(
-    (game: any) => game.location === "LOCAL"
-  );
+  const games = Array.isArray(data?.games) ? data.games : [];
+  const localGames = games.filter((game) => game.location === "LOCAL");
 
   return (
     <div className="local-games-container">
@@ -52,9 +97,8 @@ const LocalGames: FC = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           ref={ref}
         >
-          <h2>Popular Local Games</h2>
           <Row gutter={[16, 16]}>
-            {localGames.map((game: any, index: number) => (
+            {localGames.map((game, index) => (
               <Col key={game.id} xs={24} sm={12} md={8} lg={6}>
                 <motion.div
                   initial="hidden"
@@ -68,20 +112,13 @@ const LocalGames: FC = () => {
                       <img
                         alt={game.title_en}
                         src={`${BASE_URL}/${game.assets[0]?.url}`}
+                        style={{ height: "200px", objectFit: "cover" }}
                       />
                     }
                   >
                     <Card.Meta
                       title={
-                        <span
-                          style={{
-                            color: "#fff",
-                            fontSize: "24px",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          {game.title_en}
-                        </span>
+                        <span className="game-title">{game.title_en}</span>
                       }
                     />
                   </Card>
