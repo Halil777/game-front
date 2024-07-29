@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/Footer";
 import {
   Home,
   About,
@@ -17,6 +16,7 @@ import SignUp from "./pages/sign-up/SignUp";
 import Login from "./pages/login/Login";
 import TeamSpeak from "./pages/team-speak/TeamSpeak";
 import RulesDetail from "./pages/team-speak/RulesDetail";
+import Profile from "./pages/profile/Profile.tsx";
 
 function App() {
   return (
@@ -38,9 +38,9 @@ function App() {
           <Route path="/support" element={<Support />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Suspense>
-      <Footer />
     </BrowserRouter>
   );
 }

@@ -17,7 +17,7 @@ const Language: FC = () => {
         value={i18n.language}
       >
         <option value="en">EN</option>
-        <option value="ru">Ру</option>
+        <option value="ru">RU</option>
         <option value="tm">TM</option>
       </select>
     </div>

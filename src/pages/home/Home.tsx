@@ -1,19 +1,17 @@
 import { FC } from "react";
-import { Row, Col, Card, Button, Layout } from "antd";
+import { Row, Col, Card, Layout } from "antd";
 import { useNavigate } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {
-  MacCommandOutlined,
-  AndroidOutlined,
-  WindowsOutlined,
-} from "@ant-design/icons"; // Ant Design icons
+import { MacCommandOutlined, WindowsOutlined } from "@ant-design/icons"; // Ant Design icons
 import "./home.css";
 import News from "../news/News";
+import { useTranslation } from "react-i18next";
 
 const { Content } = Layout;
 
 const Home: FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   // Animation controls for different sections
@@ -45,24 +43,15 @@ const Home: FC = () => {
           ref={heroRef}
           transition={{ duration: 0.5 }}
         >
-          <h1>Welcome to Electron Sport</h1>
-          <p>
-            Игровая платформа, которая позволит поклонникам киберспорта в
-            Туркменистане еще больше насладится игровым процессом.
-          </p>
+          <h1>{t("home.title")}</h1>
+          <p>{t("home.subtitle")}</p>
           <div className="hero-actions">
-            <Button
-              type="primary"
-              size="large"
-              className="registration-button"
-              onClick={() => navigate("/login")}
-            >
-              Get Started
-            </Button>
+            <button className="button-style" onClick={() => navigate("/login")}>
+              {t("home.get_started")}
+            </button>
             <div className="available-on">
-              <span>Доступно:</span>
+              <span>{t("home.avaliable")}:</span>
               <MacCommandOutlined className="platform-icon" />
-              <AndroidOutlined className="platform-icon" />
               <WindowsOutlined className="platform-icon" />
             </div>
           </div>
@@ -75,7 +64,7 @@ const Home: FC = () => {
           ref={featuredGamesRef}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <h2>Featured Games</h2>
+          <h2>{t("home.famous")}</h2>
           <Row gutter={[16, 16]}>
             {[1, 2, 3, 4].map((i) => (
               <Col key={i} xs={24} sm={12} md={8} lg={6}>
@@ -101,18 +90,15 @@ const Home: FC = () => {
         <News />
 
         <div className="call-to-action">
-          <h2 className="cta-title">Как начать играть на платформе?</h2>
-          <p className="cta-description">
-            Пройди регистрацию, получи индивидуальный ключ и начни играть с
-            нами!
-          </p>
+          <h2 className="cta-title">{t("home.cta_title")}</h2>
+          <p className="cta-description">{t("home.cta_description")}</p>
           <div className="cta-button-container">
-            <Button
-              className="all-news-btn"
+            <button
+              className="button-style"
               onClick={() => navigate("/registration")}
             >
-              Регистрация
-            </Button>
+              {t("home.cta_button")}
+            </button>
           </div>
         </div>
       </div>

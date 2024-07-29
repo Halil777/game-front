@@ -1,8 +1,10 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./rules.css";
+import { useTranslation } from "react-i18next";
 
 const TeamSpeakRules: FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleButtonClick = () => {
@@ -12,16 +14,14 @@ const TeamSpeakRules: FC = () => {
   return (
     <div className="rules-container">
       <div className="rules-card">
-        <img src="/images/teamspeak.png" alt="TeamSpeak" />
+        <img
+          src="/images/photo_2024-07-29_16-01-44-removebg-preview.png"
+          alt="TeamSpeak"
+        />
         <div className="rules-card-content">
-          <h2>Prawila ispolzowaniya</h2>
-          <p>
-            В случае нарушения правил, возможна полная блокировка учётной записи
-            на платформе Unite Gaming. Пожалуйста, изучите правила до
-            использования наших сервисов!!!
-          </p>
+          <h2>{t("teamspeak.terms_title")}</h2>
           <button className="learn-button" onClick={handleButtonClick}>
-            Изучить правила
+            {t("teamspeak.learn_rules")}
           </button>
         </div>
       </div>

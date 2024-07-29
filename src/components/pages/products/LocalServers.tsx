@@ -7,6 +7,7 @@ import {
   LockOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 import "./local.css";
 
 const cardVariants = {
@@ -15,6 +16,7 @@ const cardVariants = {
 };
 
 const LocalServers: FC = () => {
+  const { t } = useTranslation();
   const [ref1, inView1] = useInView({ triggerOnce: true });
   const [ref2, inView2] = useInView({ triggerOnce: true });
   const [ref3, inView3] = useInView({ triggerOnce: true });
@@ -33,15 +35,8 @@ const LocalServers: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h1>Local Servers</h1>
-          <p>
-            Local servers are physical or virtual servers located within your
-            local network or data center. They provide fast, reliable, and
-            secure access to your applications, files, and services, ensuring
-            minimal latency and optimal performance. Whether for gaming,
-            business applications, or personal projects, local servers offer
-            unparalleled control and customization.
-          </p>
+          <h1>{t("local_server.local_servers_heading")}</h1>
+          <p>{t("local_server.local_servers_description")}</p>
         </motion.div>
 
         <motion.div
@@ -50,7 +45,7 @@ const LocalServers: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <h2>Benefits of Local Servers</h2>
+          <h2>{t("local_server.benefits_heading")}</h2>
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={12} md={8}>
               <motion.div
@@ -61,7 +56,11 @@ const LocalServers: FC = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <Card
-                  title={<span className="custom-card-title">Low Latency</span>}
+                  title={
+                    <span className="custom-card-title">
+                      {t("local_server.low_latency")}
+                    </span>
+                  }
                   cover={
                     <ThunderboltOutlined
                       style={{
@@ -72,10 +71,7 @@ const LocalServers: FC = () => {
                     />
                   }
                 >
-                  <p>
-                    Experience minimal lag and fast response times, ideal for
-                    real-time applications.
-                  </p>
+                  <p>{t("local_server.low_latency_description")}</p>
                 </Card>
               </motion.div>
             </Col>
@@ -89,7 +85,9 @@ const LocalServers: FC = () => {
               >
                 <Card
                   title={
-                    <span className="custom-card-title">Enhanced Security</span>
+                    <span className="custom-card-title">
+                      {t("local_server.enhanced_security")}
+                    </span>
                   }
                   cover={
                     <LockOutlined
@@ -101,10 +99,7 @@ const LocalServers: FC = () => {
                     />
                   }
                 >
-                  <p>
-                    Keep your data secure with localized control and robust
-                    security measures.
-                  </p>
+                  <p>{t("local_server.enhanced_security_description")}</p>
                 </Card>
               </motion.div>
             </Col>
@@ -118,7 +113,9 @@ const LocalServers: FC = () => {
               >
                 <Card
                   title={
-                    <span className="custom-card-title">Customization</span>
+                    <span className="custom-card-title">
+                      {t("local_server.customization")}
+                    </span>
                   }
                   cover={
                     <SettingOutlined
@@ -130,10 +127,7 @@ const LocalServers: FC = () => {
                     />
                   }
                 >
-                  <p>
-                    Tailor your server settings to meet your specific needs and
-                    requirements.
-                  </p>
+                  <p>{t("local_server.customization_description")}</p>
                 </Card>
               </motion.div>
             </Col>

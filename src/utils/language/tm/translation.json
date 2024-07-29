@@ -1,25 +1,107 @@
 {
-  "sidebar": {
-    "home": "Baş sahypa",
-    "admin": "Admin Panel",
-    "settings": "Sazlamalar",
-    "profile": "Şahsy penjire",
-    "dashboard": "Daşboard",
-    "codes": "Kod",
-    "search": "Gözlemek  ..."
+  "navbar": {
+    "products": "Önümlerimiz",
+    "about": "Biz barada",
+    "news": "Täzelikler",
+    "support": "Goldaw",
+    "games": "Oýunlar",
+    "local_servers": "Ýerli Serverler",
+    "online_servers": "Online Serverler",
+    "local_games": "Ýerli Oýunlar",
+    "online_games": "Online Oýunlar",
+    "registration": "Ýazylmak"
   },
-  "table": {
-    "code": "Kod",
-    "title": "Ady",
-    "description": "Düşündiriş",
-    "short_name": "Gysgaça ady",
-    "parent_id": "Parent ID",
-    "status": "Status",
-    "actions": "Goşmaçalar",
-    "active": "Işjeň",
-    "pending": "Garaşylýar",
-    "disabled": "Öçürilen",
-    "delete": "Pozmak",
-    "edit": "Üýtgetmek"
+
+  "login": {
+    "title": "Elektron Sporta girmek",
+    "username": "Ulanyjy ady",
+    "password": "Parol",
+    "don't_have_account": "Hasabyňyz ýokmy? ",
+    "signup": "Ýazylmak",
+    "login": "Girmek",
+    "phone": "Telefon Nomeri",
+    "confirm": "Paroly Tassyklamak",
+    "email": "E-poçta",
+    "register": "Hasaba Al"
+  },
+
+  "home": {
+    "title": "Elektron Sporta hoş geldiňiz",
+    "subtitle": "Türkmenistandaky kibersport janköýerlerine oýun prosessinden has köp lezzet almaga mümkinçilik berýän oýun platformasy",
+    "get_started": "Başlamak",
+    "avaliable": "Elýeterli",
+    "famous": "Meşhur Oýunlar",
+    "cta_title": "Platformatda oýnamagy nädip başlarsyňyz?",
+    "cta_description": "Hasap açyň, şahsy açar alyň we biziň bilen oýnamaga başlaň!",
+    "cta_button": "Ýazylmak"
+  },
+
+  "news": {
+    "news_heading": "Habarlar we Wakalar",
+    "read_more": "Has giňişleýin",
+    "all_news": "Hemmesi"
+  },
+
+  "local_server": {
+    "local_servers_heading": "Lokal serverler",
+    "local_servers_description": "Türkmenistanyň çäginde ýerleşýän lokal serwerler, bu ýerde oýunçylaryň arasyndaky meşhur oýunlar bolar we bu serwerlerde ýurtdaky oýunçylaryň arasynda ýaryşlar geçiriler.",
+    "benefits_heading": "Lokal serverleriň peýdalary",
+    "low_latency": "Pes gijikdirme",
+    "low_latency_description": "Minimal lag we çalt reaksiýa bilen real wagtlaýyn programmalara ideal.",
+    "enhanced_security": "Ýokary Howpsuzlyk",
+    "enhanced_security_description": "Maglumatlaryňyzy ýerli dolandyryş we güýçli howpsuzlyk çäreleri bilen gorap saklaň.",
+    "customization": "Sazlama",
+    "customization_description": "Serveriňizi ýörite zerurlyklaryňyza we talaplaryňyza laýyklykda sazlaň."
+  },
+
+  "online_server": {
+    "title": "Onlaýn Serverler",
+    "description": "Onlaýn serverler internetde ýerleşdirilýär, global elýeterlilik we giňelmegini üpjün edýär. Web sahypalary, onlaýn oýunlar we bulutly hyzmatlar ýaly giň meýdana eýe bolan programmalar üçin ideal. Onlaýn serverler güýçli ýerine ýetiriliş, ýokary elýeterlilik we zerurlyga görä resurslary giňeltmek mümkinçiligini üpjün edýär.",
+    "benefits": "Onlaýn Serverleriň peýdalary",
+    "global_access": "Global Elýeterlilik",
+    "global_access_description": "Siziň hyzmatlaryňyza dünýäniň islendik ýerinden internet baglanyşygy arkaly girmegi üpjün edýär.",
+    "scalability": "Giňeldiş",
+    "scalability_description": "Resurslaryňyzy üýtgän talaplara laýyklykda aňsatlyk bilen giňeldiň.",
+    "reliability": "Ygtybarlylyk",
+    "reliability_description": "Bulutly infrastruktura bilen ýokary elýeterlilik we ýerine ýetiriş üpjün edýär."
+  },
+
+  "teamspeak": {
+    "best_solution": "Oýunlarda sesli aragatnaşyk üçin iň gowy çözgüt!",
+    "download_pc": "PC üçin ýükläň",
+    "terms_title": "Ulanyş Şertleri",
+    "learn_rules": "Düzgünleri öwren",
+    "rules_heading": "Server Düzgünleri",
+    "rules_list": [
+      "Söhbetdeşligiň gatnaşyjylary bilen mylakatly boluň. Başga adamlary göwnüne degip ýa-da kemsidip bilýän habary ibermäň.",
+      "Jümleleriňiziň ahlaksyz, edepsiz däldigine göz ýetiriň.",
+      "Söhbetdeşlikde şahsy we oýun aragatnaşygyny garyşdyrmaň. Konflikt ýagdaýynda asuda boluň.",
+      "Kemsidiji we baha beriji jogaplardan gaça duruň, umumy kanallarda hapa sözler ulanmak düýbünden gadagan.",
+      "Göwnüňize degip biljek atlary/lakamlary ulanmak gadagandyr."
+    ],
+    "active_servers_heading": "Işjeň Serverleriň IP-leri",
+    "teamspeak_servers_subheading": "Işjeň Teamspeak Serverler"
+  },
+
+  "about": {
+    "welcome_heading": "GameHub-a Hoş Geldiňiz",
+    "welcome_text": "GameHub, onlaýn oýun bilen baglanyşykly ähli zatlar üçin iň soňky ýer. Iň gowy köpçülik oýunlaryny gözleýän oýunçy bolsaňyz, güýçli server çözümlerini gözleýän ösüşçi ýa-da oýunçylar bilen bagly gatnaşygy bolan jemgyýet agzasy bolsaňyz, GameHub size kömek eder.",
+    "statistics_heading": "Statistika",
+    "registered_users": "Hasaba Alnan Ulanyjylar",
+    "active_players": "Günlük Işjeň Oýunçylar",
+    "best_games": "Iň gowy Onlaýn Oyunlar",
+    "our_partners": "Hyzmatdaşlarymyz"
+  },
+
+  "support": {
+    "support_description": "Kömek gerekmi? Biziň bilen habarlaşyň.",
+    "phone_heading": "Telefon Nomeri",
+    "phone_number": "+123 456 7890",
+    "clock_icon_label": "Telefon nyşany",
+    "support_hours_heading": "Goldaw Sagatlary",
+    "support_hours": "Düşenbe - Penşenbe: 9:00 - 17:00",
+    "email_heading": "Elektron Poçta",
+    "email_address": "support@gamehub.com",
+    "email_icon_label": "Elektron poçta nyşany"
   }
 }

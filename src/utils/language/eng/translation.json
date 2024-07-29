@@ -1,28 +1,107 @@
 {
-  "alerts": {
-    "accept": "Akzeptieren"
+  "navbar": {
+    "products": "Products",
+    "about": "About",
+    "news": "News",
+    "support": "Support",
+    "games": "Games",
+    "local_servers": "Local Servers",
+    "online_servers": "Online Servers",
+    "local_games": "Local Games",
+    "online_games": "Online Games",
+    "registration": "Registration"
   },
-  "sidebar": {
-    "home": "Home",
-    "admin": "Admin Panel",
-    "settings": "Settings",
-    "profile": "Profile",
-    "dashboard": "Dashboard",
-    "codes": "Codes",
-    "search": "Search ..."
+
+  "login": {
+    "title": "Log in Elektron Sport",
+    "username": "Username",
+    "password": "Password",
+    "don't_have_account": "Don't have an account?",
+    "signup": "Sign up",
+    "login": "Login",
+    "phone": "Phone Number",
+    "confirm": "Confirm Password",
+    "email": "Email",
+    "register": "Register"
   },
-  "table": {
-    "code": " Code",
-    "title": "Title",
-    "description": "Description",
-    "short_name": "Short Name",
-    "parent_id": "Parent ID",
-    "status": "Status",
-    "actions": "Actions",
-    "active": "Active",
-    "pending": "Pending",
-    "disabled": "Disabled",
-    "delete": "Delete",
-    "edit": "Edit"
+
+  "home": {
+    "title": "Welcome to Electron Sport",
+    "subtitle": "An esports platform that allows fans in Turkmenistan to enjoy the gaming experience even more.",
+    "get_started": "Get Started",
+    "avaliable": "Available",
+    "famous": "Featured Games",
+    "cta_title": "How to start playing on the platform?",
+    "cta_description": "Complete registration, get a personal key, and start playing with us!",
+    "cta_button": "Register"
+  },
+
+  "news": {
+    "news_heading": "News and Events",
+    "read_more": "Read More",
+    "all_news": "All News"
+  },
+
+  "local_server": {
+    "local_servers_heading": "Local Servers",
+    "local_servers_description": "Local servers - servers located on the territory of Turkmenistan in which there will be popular games among players, also on these servers tournaments will be held among players on the territory of the country.",
+    "benefits_heading": "Benefits of Local Servers",
+    "low_latency": "Low Latency",
+    "low_latency_description": "Experience minimal lag and fast response times, ideal for real-time applications.",
+    "enhanced_security": "Enhanced Security",
+    "enhanced_security_description": "Keep your data secure with localized control and robust security measures.",
+    "customization": "Customization",
+    "customization_description": "Tailor your server settings to meet your specific needs and requirements."
+  },
+
+  "online_server": {
+    "title": "Online Servers",
+    "description": "Online servers are hosted on the internet, providing global accessibility and scalability. They are ideal for applications requiring broad reach, such as websites, online games, and cloud-based services. Online servers offer robust performance, high availability, and the ability to scale resources as needed.",
+    "benefits": "Benefits of Online Servers",
+    "global_access": "Global Access",
+    "global_access_description": "Access your services from anywhere in the world with an internet connection.",
+    "scalability": "Scalability",
+    "scalability_description": "Effortlessly scale your resources to meet changing demands.",
+    "reliability": "Reliability",
+    "reliability_description": "Ensure high availability and performance with cloud-based infrastructure."
+  },
+
+  "teamspeak": {
+    "best_solution": "The best solution for voice communication in games!",
+    "download_pc": "Download for PC",
+    "terms_title": "Terms of Use",
+    "learn_rules": "Learn the Rules",
+    "rules_heading": "Server Rules",
+    "rules_list": [
+      "Be polite to all chat participants. Do not publish a message if it may offend or insult other people.",
+      "Make sure that your statements are not immoral or indecent.",
+      "Do not mix personal and game communication in the chat. Remain calm in a conflict situation.",
+      "Avoid offensive and evaluative responses, swearing is strictly prohibited in general channels.",
+      "It is forbidden to use names/nicknames that may be offensive."
+    ],
+    "active_servers_heading": "IP of Active Servers",
+    "teamspeak_servers_subheading": "Active Teamspeak Servers"
+  },
+
+  "about": {
+    "welcome_heading": "Welcome to GameHub",
+    "welcome_text": "GameHub is your ultimate destination for everything related to online gaming. Whether you're a player looking for the best multiplayer games, a developer seeking powerful server solutions, or a community member wanting to connect with like-minded gamers, GameHub has you covered.",
+    "statistics_heading": "Statistics",
+    "registered_users": "Registered Users",
+    "active_players": "Active Players Daily",
+    "best_games": "Best Online Games",
+    "our_partners": "Our Partners"
+  },
+
+  "support": {
+    "support_description": "Need assistance? Contact us through various channels.",
+    "phone_heading": "Phone Number",
+    "phone_number": "+123 456 7890",
+    "clock_icon_label": "Phone icon",
+    "support_hours_heading": "Support Hours",
+    "support_hours": "Mon - Fri: 9:00 AM - 5:00 PM",
+    "email_heading": "Email",
+    "email_address": "support@gamehub.com",
+    "email_icon_label": "Email icon"
   }
 }

@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from "react-i18next";
 import "./support.css";
 
 const cardVariants = {
@@ -15,6 +16,7 @@ const cardVariants = {
 };
 
 const Support: FC = () => {
+  const { t } = useTranslation();
   const [ref1, inView1] = useInView({ triggerOnce: true });
   const [ref2, inView2] = useInView({ triggerOnce: true });
   const [ref3, inView3] = useInView({ triggerOnce: true });
@@ -23,7 +25,7 @@ const Support: FC = () => {
     <div className="support-container">
       <div className="support-content">
         <p className="support-description">
-          Need assistance? Contact us through various channels.
+          {t("support.support_description")}
         </p>
         <div className="support-cards">
           <motion.div
@@ -34,10 +36,13 @@ const Support: FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Card className="support-card">
-              <PhoneOutlined className="support-icon" />
+              <PhoneOutlined
+                className="support-icon"
+                aria-label={t("phone_icon_label")}
+              />
               <div>
-                <h3>Phone Number</h3>
-                <p>+123 456 7890</p>
+                <h3>{t("support.phone_heading")}</h3>
+                <p>{t("support.phone_number")}</p>
               </div>
             </Card>
           </motion.div>
@@ -50,10 +55,13 @@ const Support: FC = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <Card className="support-card">
-              <ClockCircleOutlined className="support-icon" />
+              <ClockCircleOutlined
+                className="support-icon"
+                aria-label={t("support.clock_icon_label")}
+              />
               <div>
-                <h3>Support Hours</h3>
-                <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
+                <h3>{t("support.support_hours_heading")}</h3>
+                <p>{t("support.support_hours")}</p>
               </div>
             </Card>
           </motion.div>
@@ -66,10 +74,13 @@ const Support: FC = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <Card className="support-card">
-              <MailOutlined className="support-icon" />
+              <MailOutlined
+                className="support-icon"
+                aria-label={t("support.email_icon_label")}
+              />
               <div>
-                <h3>Email</h3>
-                <p>support@gamehub.com</p>
+                <h3>{t("support.email_heading")}</h3>
+                <p>{t("support.email_address")}</p>
               </div>
             </Card>
           </motion.div>

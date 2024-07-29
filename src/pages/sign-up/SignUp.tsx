@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import axios from "axios";
 import "./sign-up.css";
+import { useTranslation } from "react-i18next";
 
 const SignUp: FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
@@ -50,6 +52,9 @@ const SignUp: FC = () => {
         "http://88.218.60.127:5678/client/sign-up",
         payload
       );
+      localStorage.setItem("user", JSON.stringify(response.data));
+      const token = response.data.token; // Replace with actual token field
+      localStorage.setItem("client_token", token);
       alert("Sign-up successful!");
       console.log(response);
       navigate("/login");
@@ -65,7 +70,7 @@ const SignUp: FC = () => {
         <div className="logo">
           <img src="/images/logo.svg" alt="Logo" />
         </div>
-        <h2>Регистрация в Elektron Sport Gaming</h2>
+        <h2>{t("login.title")}</h2>
         <form onSubmit={handleSignUp}>
           <div className="input-group">
             <label htmlFor="fullname">Full Name</label>
@@ -79,7 +84,7 @@ const SignUp: FC = () => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">{t("login.username")}</label>
             <input
               type="text"
               id="username"
@@ -90,7 +95,7 @@ const SignUp: FC = () => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t("login.password")}</label>
             <div className="password-input">
               <input
                 type={passwordVisible ? "text" : "password"}
@@ -113,7 +118,7 @@ const SignUp: FC = () => {
             </div>
           </div>
           <div className="input-group">
-            <label htmlFor="confirm-password">Confirm Password</label>
+            <label htmlFor="confirm-password">{t("login.confirm")}</label>
             <div className="password-input">
               <input
                 type={confirmPasswordVisible ? "text" : "password"}
@@ -136,7 +141,7 @@ const SignUp: FC = () => {
             </div>
           </div>
           <div className="input-group">
-            <label htmlFor="phone">Phone Number</label>
+            <label htmlFor="phone">{t("login.phone")}</label>
             <input
               type="tel"
               id="phone"
@@ -147,7 +152,7 @@ const SignUp: FC = () => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t("login.email")}</label>
             <input
               type="email"
               id="email"
@@ -157,14 +162,19 @@ const SignUp: FC = () => {
               required
             />
           </div>
-          <button type="submit" className="signup-button">
-            Register
+
+          <button
+            type="submit"
+            className="button-style"
+            style={{ width: "106%" }}
+          >
+            {t("login.register")}
           </button>
         </form>
         <p className="login-text">
-          Уже есть учётная запись?
+          {t("login.don't_have_account")}
           <span className="login-link" onClick={() => navigate("/login")}>
-            Войти
+            {t("login.login")}
           </span>
         </p>
       </div>

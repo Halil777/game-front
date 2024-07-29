@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import axios from "axios";
 import "./login.css";
+import { useTranslation } from "react-i18next";
 
 const Login: FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [formData, setFormData] = useState({ username: "", password: "" });
 
@@ -44,10 +46,10 @@ const Login: FC = () => {
         <div className="logo">
           <img src="/images/logo.svg" alt="Logo" />
         </div>
-        <h2>Войти в Elektron Sport Gaming</h2>
+        <h2>{t("login.title")}</h2>
         <form onSubmit={handleLogin}>
           <div className="input-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">{t("login.username")}</label>
             <input
               type="text"
               id="username"
@@ -58,7 +60,7 @@ const Login: FC = () => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t("login.password")}</label>
             <div className="password-input">
               <input
                 type={passwordVisible ? "text" : "password"}
@@ -80,14 +82,18 @@ const Login: FC = () => {
               </span>
             </div>
           </div>
-          <button type="submit" className="login-button">
-            Login
+          <button
+            type="submit"
+            className="button-style"
+            style={{ width: "106%" }}
+          >
+            {t("login.login")}
           </button>
         </form>
         <p className="signup-text">
-          Нет аккаунта?
+          {t("login.don't_have_account")}
           <span className="signup-link" onClick={() => navigate("/signup")}>
-            Регистрация
+            {t("login.signup")}
           </span>
         </p>
       </div>

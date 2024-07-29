@@ -1,12 +1,15 @@
 import { FC, useState, useEffect } from "react";
-import { Menu, Dropdown, Button } from "antd";
+import { Menu, Dropdown } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import Language from "../../utils/language/Language";
+import { useTranslation } from "react-i18next";
 
 const Navbar: FC = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State for tracking user login
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,13 +22,19 @@ const Navbar: FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Check if user is logged in by checking local storage or any other method
+    const token = localStorage.getItem("client_token");
+    setIsLoggedIn(!!token); // Set isLoggedIn based on token presence
+  }, []);
+
   const productMenu = (
     <Menu className="custom-dropdown-menu">
       <Menu.Item key="1" className="custom-dropdown-menu-item">
-        <Link to="/local-servers">Local Servers</Link>
+        <Link to="/local-servers">{t("navbar.local_servers")}</Link>
       </Menu.Item>
       <Menu.Item key="2" className="custom-dropdown-menu-item">
-        <Link to="/online-servers">Online Servers</Link>
+        <Link to="/online-servers">{t("navbar.online_servers")}</Link>
       </Menu.Item>
       <Menu.Item key="3" className="custom-dropdown-menu-item">
         <Link to="/team-speak">TeamSpeak</Link>
@@ -36,10 +45,10 @@ const Navbar: FC = () => {
   const gamesMenu = (
     <Menu className="custom-dropdown-menu">
       <Menu.Item key="1" className="custom-dropdown-menu-item">
-        <Link to="/local-games">Local Games</Link>
+        <Link to="/local-games">{t("navbar.local_games")}</Link>
       </Menu.Item>
       <Menu.Item key="2" className="custom-dropdown-menu-item">
-        <Link to="/online-games">Online Games</Link>
+        <Link to="/online-games">{t("navbar.online_games")}</Link>
       </Menu.Item>
     </Menu>
   );
@@ -62,18 +71,18 @@ const Navbar: FC = () => {
                   className="ant-dropdown-link"
                   onClick={(e) => e.preventDefault()}
                 >
-                  Products
+                  {t("navbar.products")}
                 </a>
               </Dropdown>
             </Menu.Item>
             <Menu.Item key="about">
-              <Link to="/about">About</Link>
+              <Link to="/about">{t("navbar.about")}</Link>
             </Menu.Item>
             <Menu.Item key="news">
-              <Link to="/news">News</Link>
+              <Link to="/news">{t("navbar.news")}</Link>
             </Menu.Item>
             <Menu.Item key="support">
-              <Link to="/support">Support</Link>
+              <Link to="/support">{t("navbar.support")}</Link>
             </Menu.Item>
             <Menu.Item key="games">
               <Dropdown overlay={gamesMenu}>
@@ -81,25 +90,43 @@ const Navbar: FC = () => {
                   className="ant-dropdown-link"
                   onClick={(e) => e.preventDefault()}
                 >
-                  Games
+                  {t("navbar.games")}
                 </a>
               </Dropdown>
             </Menu.Item>
             <Menu.Item key="language" className="language-menu-item">
               <Language />
             </Menu.Item>
+            {isLoggedIn ? (
+              <>
+                <Menu.Item key="registration">
+                  <button
+                    className="button-style"
+                    onClick={() => navigate("/login")}
+                  >
+                    {t("navbar.registration")}
+                  </button>
+                </Menu.Item>
+                <Menu.Item>
+                  <button
+                    className="button-style"
+                    onClick={() => navigate("/profile")}
+                  >
+                    Profile
+                  </button>
+                </Menu.Item>
+              </>
+            ) : (
+              <Menu.Item key="registration">
+                <button
+                  className="button-style"
+                  onClick={() => navigate("/login")}
+                >
+                  {t("navbar.registration")}
+                </button>
+              </Menu.Item>
+            )}
           </Menu>
-          <Button
-            type="primary"
-            style={{
-              backgroundColor: "#79109D",
-              borderColor: "#79109D",
-              padding: "20px",
-            }}
-            onClick={() => navigate("/login")}
-          >
-            Registration
-          </Button>
         </div>
       </div>
     </div>

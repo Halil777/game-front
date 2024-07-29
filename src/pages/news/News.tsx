@@ -1,10 +1,11 @@
 import { FC } from "react";
 import useSWR from "swr";
-import { Card, Avatar, Space, Tooltip, Button } from "antd";
+import { Card, Avatar, Space, Tooltip } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from "react-i18next";
 import "./news.css";
 import { BASE_URL } from "../../api/baseUrl";
 
@@ -13,6 +14,7 @@ const { Meta } = Card;
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const News: FC = () => {
+  const { t } = useTranslation();
   const newsControls = useAnimation();
   const [newsRef, newsInView] = useInView({ triggerOnce: true });
   const navigate = useNavigate();
@@ -26,8 +28,8 @@ const News: FC = () => {
     navigate(link);
   };
 
-  if (error) return <div>Error loading news</div>;
-  if (!newsItems) return <div>Loading...</div>;
+  if (error) return <div>{t("error_loading_news")}</div>;
+  if (!newsItems) return <div>{t("loading_news")}</div>;
 
   // Limit news items to 4 if on the home page
   const displayedNews =
@@ -35,7 +37,7 @@ const News: FC = () => {
 
   return (
     <>
-      <h2 className="news-heading">Новости и мероприятия</h2>
+      <h2 className="news-heading">{t("news.news_heading")}</h2>
       <motion.div
         className="news-container"
         initial={{ opacity: 0, y: 50 }}
@@ -64,7 +66,7 @@ const News: FC = () => {
                   <span className="news-date">
                     {new Date(item.created_at).toLocaleDateString()}
                   </span>
-                  <Tooltip title="Read More" key={`tooltip-${item.id}`}>
+                  <Tooltip title={t("read_more")} key={`tooltip-${item.id}`}>
                     <InfoCircleOutlined
                       style={{ color: "#1890ff" }}
                       onClick={() => handleIconClick(`/news/${item.id}`)}
@@ -78,9 +80,9 @@ const News: FC = () => {
       </motion.div>
       {location.pathname === "/" && (
         <div className="news-button-container">
-          <Button className="all-news-btn" onClick={() => navigate("/news")}>
-            Все Новости
-          </Button>
+          <button className="button-style" onClick={() => navigate("/news")}>
+            {t("news.all_news")}
+          </button>
         </div>
       )}
     </>

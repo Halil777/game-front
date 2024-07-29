@@ -1,4 +1,5 @@
-import { FC } from "react";
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { Card } from "antd";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -10,7 +11,8 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const About: FC = () => {
+const About: React.FC = () => {
+  const { t } = useTranslation();
   const [ref1, inView1] = useInView({ triggerOnce: true });
   const [ref2, inView2] = useInView({ triggerOnce: true });
   const [ref3, inView3] = useInView({ triggerOnce: true });
@@ -29,14 +31,8 @@ const About: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h2>Welcome to GameHub</h2>
-          <p>
-            GameHub is your ultimate destination for everything related to
-            online gaming. Whether you're a player looking for the best
-            multiplayer games, a developer seeking powerful server solutions, or
-            a community member wanting to connect with like-minded gamers,
-            GameHub has you covered.
-          </p>
+          <h2>{t("home.title")}</h2>
+          <p>{t("home.subtitle")}</p>
         </motion.div>
 
         <motion.h2
@@ -45,7 +41,7 @@ const About: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Statistics
+          {t("about.statistics_heading")}
         </motion.h2>
 
         <motion.div
@@ -62,9 +58,8 @@ const About: FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Card className="stat-card">
-              <h3>Registered Users</h3>
+              <h3>{t("about.registered_users")}</h3>
               <CountUp start={0} end={500000} duration={5} separator="," /> +
-              {/* Example: Start from 0, end at 500,000 over 2 seconds */}
             </Card>
           </motion.div>
           <motion.div
@@ -75,9 +70,8 @@ const About: FC = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <Card className="stat-card">
-              <h3>Active Players Daily</h3>
+              <h3>{t("about.active_players")}</h3>
               <CountUp start={0} end={50000} duration={5} separator="," /> +
-              {/* Example: Start from 0, end at 50,000 over 2 seconds */}
             </Card>
           </motion.div>
           <motion.div
@@ -88,9 +82,8 @@ const About: FC = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <Card className="stat-card">
-              <h3>Best Online Games</h3>
+              <h3>{t("about.best_games")}</h3>
               <CountUp start={0} end={100} duration={5} /> +
-              {/* Example: Start from 0, end at 100 over 2 seconds */}
             </Card>
           </motion.div>
         </motion.div>
@@ -101,7 +94,7 @@ const About: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
         >
-          Our Partners
+          {t("about.our_partners")}
         </motion.h2>
 
         <motion.div

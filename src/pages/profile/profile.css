@@ -1,0 +1,74 @@
+/* Main profile container styling */
+.profile-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #1e1e1e; /* Dark background for the profile card */
+  margin-top: 100px;
+  color: #eaeaea; /* Light text color for contrast */
+}
+
+/* Profile heading */
+.profile-container h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffa500; /* Orange color for the heading */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Profile information section */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Styling for each profile item */
+.profile-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid #444;
+  border-radius: 6px;
+  background-color: #2a2a2a; /* Slightly lighter background for each item */
+}
+
+/* Label styling within profile items */
+.profile-item label {
+  font-weight: 500;
+  color: #ffcc00; /* Yellow color for labels to stand out */
+  font-size: 16px;
+}
+
+/* Span styling within profile items */
+.profile-item span {
+  font-weight: 400;
+  color: #ffffff; /* White color for text to stand out against dark background */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 15px;
+    margin-top: 30px;
+  }
+
+  .profile-info {
+    gap: 10px;
+  }
+
+  .profile-item {
+    padding: 10px;
+  }
+
+  .profile-item label {
+    font-size: 14px;
+  }
+
+  .profile-item span {
+    font-size: 14px;
+  }
+}

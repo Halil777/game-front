@@ -59,22 +59,6 @@ h2 {
   color: #ccc; /* Lighter icon color for visibility */
 }
 
-.login-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #79109d; /* Primary color */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #fff;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-.login-button:hover {
-  background-color: #5e0b7c; /* Darker shade on hover */
-}
-
 .signup-text {
   margin-top: 20px;
   color: #ccc; /* Light gray for subtlety */

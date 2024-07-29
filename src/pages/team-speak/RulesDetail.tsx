@@ -1,38 +1,28 @@
-import { FC } from "react";
+import React from "react";
+import { useTranslation } from "react-i18next";
 import "./rules.css";
 
-const RulesDetail: FC = () => {
+const RulesDetail: React.FC = () => {
+  const { t } = useTranslation();
+
+  // Explicitly cast the result to an array of strings
+  const rulesList = t("teamspeak.rules_list", {
+    returnObjects: true,
+  }) as string[];
+
+  // Check if it's an array
+  if (!Array.isArray(rulesList)) {
+    return <div>Error: rules_list is not an array.</div>;
+  }
+
   return (
     <div className="rules-detail-container">
-      <h1 className="rules-detail-heading">Prawila na Servere </h1>
+      <h1 className="rules-detail-heading">{t("teamspeak.rules_heading")}</h1>
       <p className="rules-detail-description">
         <ol>
-          <li>
-            Будьте вежливы со всеми участниками чата. Не публикуйте сообщение,
-            если оно может обидеть или оскорбить других людей.
-          </li>
-          <li>
-            Следите, чтобы ваши высказывания не были аморальными, неприличными.
-          </li>
-          <li>
-            Не смешивайте личное и игровое общение в чате. Сохраняйте
-            спокойствие в конфликтной ситуации.
-          </li>
-          <li>
-            Избегайте оскорбительно-оценочных ответов, мат строго запрещен в
-            общих каналах.
-          </li>
-          <li>
-            Запрещено использовать имена/никнеймы, которые могут нести за собой
-            оскорбительный характер.
-          </li>
-          <li>
-            В случае нарушения правил, возможна полная блокировка учётной записи
-            на платформе Unite Gaming.
-          </li>
-          <li>
-            Пожалуйста, изучите правила до использования наших сервисов!!!
-          </li>
+          {rulesList.map((rule, index) => (
+            <li key={index}>{rule}</li>
+          ))}
         </ol>
       </p>
     </div>

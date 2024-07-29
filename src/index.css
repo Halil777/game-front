@@ -34,3 +34,19 @@ code {
 .language-select:focus {
   border-color: #1890ff; /* Adjust focus border color as needed */
 }
+
+.button-style {
+  padding: 15px 30px;
+  background-color: #ff7a45; /* Primary color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.button-style:hover {
+  background-color: #ff5722;
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
