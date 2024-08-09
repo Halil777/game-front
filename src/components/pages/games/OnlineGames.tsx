@@ -4,6 +4,7 @@ import { Card } from "antd";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./online.css";
+import { useTranslation } from "react-i18next";
 
 // Define interfaces for the data structure
 interface GameAsset {
@@ -57,6 +58,7 @@ const cardVariants = {
 };
 
 const OnlineGames: FC = () => {
+  const { t } = useTranslation();
   const { data, error } = useSWR<{ games: GameItem[] }>(
     `${baseURL}/game/admin/get-games`,
     fetcher
@@ -74,10 +76,8 @@ const OnlineGames: FC = () => {
 
   return (
     <div className="online-games-container">
-      <h2 className="games-heading">Online Games</h2>
-      <p className="games-description">
-        Explore and enjoy multiplayer online games.
-      </p>
+      <h2 className="games-heading">{t("games.online")}</h2>
+      <p className="games-description">{t("games.subtitle")}</p>
       <motion.div
         className="games-cards"
         initial={{ opacity: 0, y: 50 }}

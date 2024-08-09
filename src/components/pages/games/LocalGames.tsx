@@ -1,10 +1,12 @@
 import { FC } from "react";
 import useSWR from "swr";
-import { Row, Col, Card } from "antd";
+import { Row, Col, Card, Button } from "antd";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { DownloadOutlined } from "@ant-design/icons";
 import "./localgames.css";
 import { BASE_URL } from "../../../api/baseUrl";
+import { useTranslation } from "react-i18next";
 
 interface GameAsset {
   url: string;
@@ -15,6 +17,7 @@ interface GameItem {
   title_en: string;
   assets: GameAsset[];
   location: string;
+  site_url: string;
 }
 
 const fetcher = async (url: string) => {
@@ -47,7 +50,6 @@ const fetcher = async (url: string) => {
   return response.json();
 };
 
-// Hardcoded URL for testing
 const baseURL = "http://88.218.60.127:5678";
 
 const cardVariants = {
@@ -56,6 +58,7 @@ const cardVariants = {
 };
 
 const LocalGames: FC = () => {
+  const { t } = useTranslation();
   const { data, error } = useSWR<{ games: GameItem[] }>(
     `${baseURL}/game/admin/get-games`,
     fetcher
@@ -80,14 +83,8 @@ const LocalGames: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h1>Local Games</h1>
-          <p>
-            Local games are those that are installed and played on a local
-            machine or network. They offer high performance and the ability to
-            play offline without the need for an internet connection. Enjoy a
-            wide variety of local games ranging from single-player adventures to
-            multiplayer LAN games.
-          </p>
+          <h1>{t("games.title")}</h1>
+          <p>{t("games.description")}</p>
         </motion.div>
 
         <motion.div
@@ -119,6 +116,18 @@ const LocalGames: FC = () => {
                     <Card.Meta
                       title={
                         <span className="game-title">{game.title_en}</span>
+                      }
+                      description={
+                        <div className="download-section">
+                          <Button
+                            type="link"
+                            href={game.site_url}
+                            target="_blank"
+                            icon={<DownloadOutlined />}
+                          >
+                            Download Game
+                          </Button>
+                        </div>
                       }
                     />
                   </Card>

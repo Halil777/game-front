@@ -11,7 +11,6 @@ import {
   LocalGames,
   OnlineGames,
 } from "./components/lazy/LazyComponents"; // Import NewsDetail for detailed news pages
-import NewsDetail from "./pages/news/NewsDetail ";
 import SignUp from "./pages/sign-up/SignUp";
 import Login from "./pages/login/Login";
 import TeamSpeak from "./pages/team-speak/TeamSpeak";
@@ -32,9 +31,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/team-speak" element={<TeamSpeak />} />
           <Route path="/teamspeak-rules" element={<RulesDetail />} />
+
           <Route path="/news" element={<News />} />
-          <Route path="/news/:id" element={<NewsDetail />} />
-          {/* Dynamic route for news details */}
+
           <Route path="/support" element={<Support />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />

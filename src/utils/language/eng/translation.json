@@ -26,7 +26,7 @@
   },
 
   "home": {
-    "title": "Welcome to Electron Sport",
+    "title": "Welcome to Elektron Sport",
     "subtitle": "An esports platform that allows fans in Turkmenistan to enjoy the gaming experience even more.",
     "get_started": "Get Started",
     "avaliable": "Available",
@@ -103,5 +103,13 @@
     "email_heading": "Email",
     "email_address": "support@gamehub.com",
     "email_icon_label": "Email icon"
+  },
+
+  "games": {
+    "title": "Local Games",
+    "description": "Local games are those that are installed and played on a local machine or network. They offer high performance and the ability to play offline without the need for an internet connection. Enjoy a wide variety of local games ranging from single-player adventures to multiplayer LAN games.",
+    "online": "Online Games",
+    "subtitle": "Explore and enjoy multiplayer online games.",
+    "back": "Back"
   }
 }

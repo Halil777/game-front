@@ -103,5 +103,13 @@
     "email_heading": "Elektron Poçta",
     "email_address": "support@gamehub.com",
     "email_icon_label": "Elektron poçta nyşany"
+  },
+
+  "games": {
+    "title": "Ýerli Oýunlar",
+    "description": "Ýerli oýunlar, ýerli enjamda ýa-da torda gurnalan we oýnalýan oýunlardyr. Olar ýokary öndürijiligi we internet birikmesiz oýnamak mümkinçiligini hödürleýär. Ýeke oýunçy başdan geçirmelerinden köp oýunçy LAN oýunlaryna çenli dürli görnüşde ýerli oýunlardan lezzet alyň.",
+    "online": "Onlaýn Oýunlar",
+    "subtitle": "Köp oýunçyly onlaýn oýunlary öwreniň we lezzet alyň.",
+    "back": "Yza"
   }
 }
